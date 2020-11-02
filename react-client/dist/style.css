@@ -1,0 +1,96 @@
+body {
+  background-color: rgb(194, 194, 194);
+}
+h1 {
+  text-align: center;
+  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+}
+h4 {
+  text-align: center;
+  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+}
+.introheader {
+  text-align: center;
+}
+.introbutton {
+  text-align: center;
+}
+.instructions {
+  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.start {
+  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.homewrapper {
+  text-align: center;
+}
+.home {
+  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.newgame {
+  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.instructionsparagraph {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+  padding: 2%;
+  background: #45e045;
+  border-radius: 12px;
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+
+}
+.board {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+  border-spacing: 0;
+  border: 2px solid black;
+}
+td {
+  border: 2px solid black;
+  height: 80px;
+  text-align: center;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
