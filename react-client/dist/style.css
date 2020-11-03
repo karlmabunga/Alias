@@ -118,3 +118,14 @@ td {
 .bluescore {
   color: blue;
 }
+.view {
+  position: absolute;
+  left: 560px;
+  top: 310px;
+}
+.nextTurn {
+  position: absolute;
+  right: 19%;
+  top: 80%;
+  font-size: 20px;
+}

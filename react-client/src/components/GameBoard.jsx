@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import TurnTitle from './TurnTitle';
 
 class GameBoard extends React.Component {
   constructor(props) {
@@ -10,11 +11,13 @@ class GameBoard extends React.Component {
       gameOver: false,
       red: 9,
       blue: 8,
+      redIsNext: true,
     };
     this.onClick = this.onClick.bind(this);
     this.addColor = this.addColor.bind(this);
     this.grandMasterView = this.grandMasterView.bind(this);
     this.newGame = this.newGame.bind(this);
+    this.trackTurns = this.trackTurns.bind(this);
   }
 
   componentDidMount() {
@@ -22,8 +25,11 @@ class GameBoard extends React.Component {
   }
 
   onClick(event) {
-    const { gameOver } = this.state;
+    const { gameOver, showColors, redIsNext } = this.state;
     let { red, blue } = this.state;
+    if (showColors) {
+      return;
+    }
     // console.log('e.target', e.target);
     // console.log(document.getElementById(`${e.target.id}`));
     event.target.classList.remove('neutral');
@@ -126,61 +132,36 @@ class GameBoard extends React.Component {
   }
 
   newGame() {
+    const { showColors } = this.state;
     const elements = document.getElementsByClassName('td');
-    console.log('elements: ', elements);
-    for (var i = 0; i < elements.length; i += 1) {
+    // console.log('elements: ', elements);
+    for (let i = 0; i < elements.length; i += 1) {
       elements[i].classList.add('neutral');
     }
     this.addColor();
+    this.setState({
+      showColors: !showColors,
+    });
+  }
+
+  trackTurns(event) {
+    const { redIsNext } = this.state;
+    console.log('classes: ', event.target.classList[1]);
+    if (redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'blue')) {
+      this.setState({
+        redIsNext: !redIsNext,
+      });
+    } else if (!redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'red')) {
+      this.setState({
+        redIsNext: !redIsNext,
+      });
+    }
   }
 
   render() {
-    // const randomRed = [];
-    // const randomBlue = [];
-    // const generateRed = () => {
-    //   for (let i = 0; i < 25; i += 1) {
-    //     const number = Math.floor(Math.random() * (25 - 1) + 1);
-    //     if (!randomRed.includes(number) && !randomBlue.includes(number)) {
-    //       randomRed.push(number);
-    //     }
-    //     if (randomRed.length === 9) {
-    //       return;
-    //     }
-    //   }
-    // };
-    // const generateBlue = () => {
-    //   for (let i = 0; i < 25; i += 1) {
-    //     const number = Math.floor(Math.random() * (25 - 1) + 1);
-    //     if (!randomBlue.includes(number) && !randomRed.includes(number)) {
-    //       randomBlue.push(number);
-    //     }
-    //     if (randomBlue.length === 8) {
-    //       return;
-    //     }
-    //   }
-    // };
-    // generateRed();
-    // generateBlue();
-    // const addColor = () => {
-    //   const colors = {};
-    //   for (let i = 1; i <= randomRed.length; i += 1) {
-    //     colors[randomRed[i]] = 'red';
-    //   }
-    //   for (let i = 1; i <= randomBlue.length; i += 1) {
-    //     colors[randomBlue[i]] = 'blue';
-    //   }
-    //   console.log(colors);
-    //   // this.setState({
-    //   //   colors,
-    //   // });
-    // };
-    // addColor();
-    // console.log('red', randomRed);
-    // console.log('blue', randomBlue);
-
     const { showGame } = this.props;
     const {
-      colors, showColors, red, blue
+      colors, showColors, red, blue, redIsNext,
     } = this.state;
     return (
       <div>
@@ -195,10 +176,11 @@ class GameBoard extends React.Component {
         <div className="masterview">
           <button type="button" onClick={() => this.grandMasterView()}>Grand Master View</button>
         </div>
-        {showColors ? <div>Grand Master View: On</div> : null}
+        {showColors ? <div className="view">Grand Master View: On</div> : null}
+        <TurnTitle redIsNext={redIsNext} />
         <div className="score"><div className="redscore">{red}</div> - <div className="bluescore">{blue}</div></div>
         <table className="board">
-          <tbody id="tbody" onClick={(e) => this.onClick(e)} >
+          <tbody id="tbody" onClick={(e) => { this.onClick(e) ; this.trackTurns(e); }} >
             <tr>
               <td id="1" className={`td neutral ${colors['1']}`} type="button">1</td>
               <td id="2" className={`td neutral ${colors['2']}`} type="button">2</td>
