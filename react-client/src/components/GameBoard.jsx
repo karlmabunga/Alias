@@ -23,6 +23,7 @@ class GameBoard extends React.Component {
 
   onClick(event) {
     const { gameOver } = this.state;
+    let { red, blue } = this.state;
     // console.log('e.target', e.target);
     // console.log(document.getElementById(`${e.target.id}`));
     event.target.classList.remove('neutral');
@@ -34,6 +35,14 @@ class GameBoard extends React.Component {
       });
       this.grandMasterView();
       alert('Game Over');
+    } else if (event.target.classList[1] === 'red') {
+      this.setState({
+        red: red -= 1,
+      });
+    } else if (event.target.classList[1] === 'blue') {
+      this.setState({
+        blue: blue -= 1,
+      });
     }
   }
 
