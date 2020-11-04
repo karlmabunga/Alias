@@ -3,7 +3,7 @@ body {
 }
 h1 {
   text-align: center;
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  /* background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%); */
 }
 h2 {
   text-align: center;
@@ -167,10 +167,11 @@ td {
 }
 .team1label {
   position: absolute;
-  padding-top: 3%;
+  top: 278px;
+  left: 490px;
 }
 .team2label {
   position: absolute;
-  padding-top: 5%;
-  left: 488px;
+  top: 310px;
+  left: 490px;
 }

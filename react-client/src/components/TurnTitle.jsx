@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
-const TurnTitle = (props) => (
+const TurnTitle = ({ redIsNext, team1, team2}) => (
   <div className="nextTurn">
-    {props.redIsNext ? 'Red' : 'Blue'}'s Turn
+    {redIsNext ? team1 || 'Red' : team2 || 'Blue'}'s Turn
   </div>
 );
 

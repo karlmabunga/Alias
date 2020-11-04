@@ -15,6 +15,9 @@ const TeamTitle = (props) => {
         </label>
         <input type="text" name="team2" placeholder="Team Blue" onChange={(event) => handleChange(event)} />
       </form>
+      <form>
+
+      </form>
   </div>
   )
 };

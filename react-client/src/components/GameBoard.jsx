@@ -14,7 +14,6 @@ class GameBoard extends React.Component {
       red: 9,
       blue: 8,
       redIsNext: true,
-      words: [],
     };
     this.onClick = this.onClick.bind(this);
     this.addColor = this.addColor.bind(this);
@@ -24,34 +23,6 @@ class GameBoard extends React.Component {
   }
 
   componentDidMount() {
-    // $.ajax({
-    //   url: '/words',
-    //   success: (data) => {
-    //     let id = 0;
-    //     const onlySome = [];
-    //     const randoms = [];
-    //     for (let i = 0; i < 100; i += 1) {
-    //       const number = Math.floor(Math.random() * (400 - 1) + 1);
-    //       // console.log('number: ', number);
-    //       if (!randoms.includes(number)) {
-    //         id += 1;
-    //         randoms.push(number);
-    //         onlySome.push([id, data[number]]);
-    //       }
-    //       if (onlySome.length === 25) {
-    //         break;
-    //       }
-    //     }
-    //     // console.log('only 25: ', onlySome);
-    //     // console.log('ramonds: ', randoms);
-    //     this.setState({
-    //       words: onlySome,
-    //     });
-    //   },
-    //   error: (err) => {
-    //     console.log('err', err);
-    //   },
-    // });
     this.addColor();
   }
 
@@ -61,11 +32,8 @@ class GameBoard extends React.Component {
     if (showColors) {
       return;
     }
-    // console.log('e.target', event.target.classList[2]);
-    // console.log(document.getElementById(`${e.target.id}`));
     event.target.classList.remove('neutral');
     event.target.classList.add('clicked');
-    // console.log('classes: ', event.target.classList)
     if (event.target.classList[1] === 'purple') {
       this.setState({
         gameOver: !gameOver,
@@ -131,10 +99,6 @@ class GameBoard extends React.Component {
     for (let i = 0; i <= randomBlue.length; i += 1) {
       colors[randomBlue[i]] = 'blue';
     }
-    // console.log('loss', automaticLoss);
-    // console.log('red', randomRed);
-    // console.log('blue', randomBlue);
-    // console.log('colors: ', colors);
     this.setState({
       colors,
     });
@@ -165,7 +129,6 @@ class GameBoard extends React.Component {
   newGame() {
     const { showColors } = this.state;
     const elements = document.getElementsByClassName('td');
-    // console.log('elements: ', elements);
     for (let i = 0; i < elements.length; i += 1) {
       elements[i].classList.add('neutral');
     }
@@ -179,7 +142,6 @@ class GameBoard extends React.Component {
 
   trackTurns(event) {
     const { redIsNext } = this.state;
-    console.log('classes: ', event.target.classList);
     if (redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'blue')) {
       this.setState({
         redIsNext: !redIsNext,
@@ -213,7 +175,7 @@ class GameBoard extends React.Component {
         </div>
         <h2>{team1 || 'Red'} vs {team2 || 'Blue'}</h2>
         {showColors ? <div className="view">Grand Master View: On</div> : null}
-        <TurnTitle redIsNext={redIsNext} />
+        <TurnTitle redIsNext={redIsNext} team1={team1} team2={team2} />
         <div className="score"><div className="redscore">{red}</div> - <div className="bluescore">{blue}</div></div>
         <table className="board">
           <tbody id="tbody" onClick={(e) => { this.onClick(e) ; this.trackTurns(e); }} >
