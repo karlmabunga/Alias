@@ -67,10 +67,11 @@ class App extends React.Component {
 
   showGame(event) {
     event.preventDefault();
-    const { showGame } = this.state;
+    const { showGame, showInstructions } = this.state;
     // console.log(event.target);
     this.setState({
       showGame: !showGame,
+      showInstructions: false,
     });
   }
 

@@ -132,6 +132,11 @@ class GameBoard extends React.Component {
     for (let i = 0; i < elements.length; i += 1) {
       elements[i].classList.add('neutral');
     }
+    this.setState({
+      red: 9,
+      blue: 8,
+      redIsNext: true,
+    });
     this.addColor();
     if (showColors) {
       this.setState({
@@ -141,15 +146,17 @@ class GameBoard extends React.Component {
   }
 
   trackTurns(event) {
-    const { redIsNext } = this.state;
-    if (redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'blue')) {
-      this.setState({
-        redIsNext: !redIsNext,
-      });
-    } else if (!redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'red')) {
-      this.setState({
-        redIsNext: !redIsNext,
-      });
+    const { redIsNext, showColors } = this.state;
+    if (!showColors) {
+      if (redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'blue')) {
+        this.setState({
+          redIsNext: !redIsNext,
+        });
+      } else if (!redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'red')) {
+        this.setState({
+          redIsNext: !redIsNext,
+        });
+      }
     }
   }
 

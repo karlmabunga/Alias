@@ -175,3 +175,7 @@ td {
   top: 310px;
   left: 490px;
 }
+.note {
+  text-align: center;
+  padding-top: 10px;
+}
