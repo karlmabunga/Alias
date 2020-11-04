@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import $ from 'jquery';
 import TurnTitle from './TurnTitle';
+import Row from './Row';
 
 class GameBoard extends React.Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class GameBoard extends React.Component {
       red: 9,
       blue: 8,
       redIsNext: true,
+      words: [],
     };
     this.onClick = this.onClick.bind(this);
     this.addColor = this.addColor.bind(this);
@@ -21,16 +24,44 @@ class GameBoard extends React.Component {
   }
 
   componentDidMount() {
+    // $.ajax({
+    //   url: '/words',
+    //   success: (data) => {
+    //     let id = 0;
+    //     const onlySome = [];
+    //     const randoms = [];
+    //     for (let i = 0; i < 100; i += 1) {
+    //       const number = Math.floor(Math.random() * (400 - 1) + 1);
+    //       // console.log('number: ', number);
+    //       if (!randoms.includes(number)) {
+    //         id += 1;
+    //         randoms.push(number);
+    //         onlySome.push([id, data[number]]);
+    //       }
+    //       if (onlySome.length === 25) {
+    //         break;
+    //       }
+    //     }
+    //     // console.log('only 25: ', onlySome);
+    //     // console.log('ramonds: ', randoms);
+    //     this.setState({
+    //       words: onlySome,
+    //     });
+    //   },
+    //   error: (err) => {
+    //     console.log('err', err);
+    //   },
+    // });
     this.addColor();
   }
 
   onClick(event) {
-    const { gameOver, showColors, redIsNext } = this.state;
+    const { gameOver, showColors } = this.state;
     let { red, blue } = this.state;
     if (showColors) {
       return;
     }
-    // console.log('e.target', e.target);
+    // console.log('e.target', event.target.classList[2]);
     // console.log(document.getElementById(`${e.target.id}`));
     event.target.classList.remove('neutral');
     event.target.classList.add('clicked');
@@ -139,14 +170,16 @@ class GameBoard extends React.Component {
       elements[i].classList.add('neutral');
     }
     this.addColor();
-    this.setState({
-      showColors: !showColors,
-    });
+    if (showColors) {
+      this.setState({
+        showColors: !showColors,
+      });
+    }
   }
 
   trackTurns(event) {
     const { redIsNext } = this.state;
-    console.log('classes: ', event.target.classList[1]);
+    console.log('classes: ', event.target.classList);
     if (redIsNext && (event.target.classList[1] === 'undefined' || event.target.classList[1] === 'blue')) {
       this.setState({
         redIsNext: !redIsNext,
@@ -159,7 +192,9 @@ class GameBoard extends React.Component {
   }
 
   render() {
-    const { showGame } = this.props;
+    const {
+      showGame, team1, team2, words, getWords,
+    } = this.props;
     const {
       colors, showColors, red, blue, redIsNext,
     } = this.state;
@@ -169,53 +204,24 @@ class GameBoard extends React.Component {
           <button type="button" className="home" onClick={showGame}>
             Home
           </button>
-          <button type="button" className="newgame" onClick={() => this.newGame()}>
+          <button type="button" className="newgame" onClick={() => { this.newGame(); getWords(); }}>
             New Game
           </button>
         </div>
         <div className="masterview">
-          <button type="button" onClick={() => this.grandMasterView()}>Grand Master View</button>
+          <button type="button" className="masterviewbutton" onClick={() => this.grandMasterView()}>Grand Master View</button>
         </div>
+        <h2>{team1 || 'Red'} vs {team2 || 'Blue'}</h2>
         {showColors ? <div className="view">Grand Master View: On</div> : null}
         <TurnTitle redIsNext={redIsNext} />
         <div className="score"><div className="redscore">{red}</div> - <div className="bluescore">{blue}</div></div>
         <table className="board">
           <tbody id="tbody" onClick={(e) => { this.onClick(e) ; this.trackTurns(e); }} >
-            <tr>
-              <td id="1" className={`td neutral ${colors['1']}`} type="button">1</td>
-              <td id="2" className={`td neutral ${colors['2']}`} type="button">2</td>
-              <td id="3" className={`td neutral ${colors['3']}`} type="button">3</td>
-              <td id="4" className={`td neutral ${colors['4']}`} type="button">4</td>
-              <td id="5" className={`td neutral ${colors['5']}`} type="button">5</td>
-            </tr>
-            <tr>
-              <td id="6" className={`td neutral ${colors['6']}`}>6</td>
-              <td id="7" className={`td neutral ${colors['7']}`}>7</td>
-              <td id="8" className={`td neutral ${colors['8']}`}>8</td>
-              <td id="9" className={`td neutral ${colors['9']}`}>9</td>
-              <td id="10" className={`td neutral ${colors['10']}`}>10</td>
-            </tr>
-            <tr>
-              <td id="11" className={`td neutral ${colors['11']}`}>11</td>
-              <td id="12" className={`td neutral ${colors['12']}`}>12</td>
-              <td id="13" className={`td neutral ${colors['13']}`}>13</td>
-              <td id="14" className={`td neutral ${colors['14']}`}>14</td>
-              <td id="15" className={`td neutral ${colors['15']}`}>15</td>
-            </tr>
-            <tr>
-              <td id="16" className={`td neutral ${colors['16']}`}>16</td>
-              <td id="17" className={`td neutral ${colors['17']}`}>17</td>
-              <td id="18" className={`td neutral ${colors['18']}`}>18</td>
-              <td id="19" className={`td neutral ${colors['19']}`}>19</td>
-              <td id="20" className={`td neutral ${colors['20']}`}>20</td>
-            </tr>
-            <tr>
-              <td id="21" className={`td neutral ${colors['21']}`}>21</td>
-              <td id="22" className={`td neutral ${colors['22']}`}>22</td>
-              <td id="23" className={`td neutral ${colors['23']}`}>23</td>
-              <td id="24" className={`td neutral ${colors['24']}`}>24</td>
-              <td id="25" className={`td neutral ${colors['25']}`}>25</td>
-            </tr>
+            <Row colors={colors} words={words.slice(0, 5)} />
+            <Row colors={colors} words={words.slice(5, 10)} />
+            <Row colors={colors} words={words.slice(10, 15)} />
+            <Row colors={colors} words={words.slice(15, 20)} />
+            <Row colors={colors} words={words.slice(20, 25)} />
           </tbody>
         </table>
       </div>

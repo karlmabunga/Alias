@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import ListItem from './ListItem';
 
 const Intro = ({ showInstructions, showGame }) => (
   <div className="introheader">

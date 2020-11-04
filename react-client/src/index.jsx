@@ -6,25 +6,49 @@ import $ from 'jquery';
 import Intro from './components/Intro';
 import Instructions from './components/Instructions';
 import GameBoard from './components/GameBoard';
+import TeamTitle from './components/TeamTitle';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      words: [],
       showInstructions: false,
       showGame: false,
+      team1: '',
+      team2: '',
     };
     this.showInstructions = this.showInstructions.bind(this);
     this.showGame = this.showGame.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.getWords = this.getWords.bind(this);
   }
 
   componentDidMount() {
+    this.getWords();
+  }
+
+  getWords() {
     $.ajax({
-      url: '/items',
+      url: '/words',
       success: (data) => {
+        let id = 0;
+        const onlySome = [];
+        const randoms = [];
+        for (let i = 0; i < 100; i += 1) {
+          const number = Math.floor(Math.random() * (400 - 1) + 1);
+          // console.log('number: ', number);
+          if (!randoms.includes(number)) {
+            id += 1;
+            randoms.push(number);
+            onlySome.push([id, data[number]]);
+          }
+          if (onlySome.length === 25) {
+            break;
+          }
+        }
         this.setState({
-          items: data,
+          words: onlySome,
         });
       },
       error: (err) => {
@@ -44,18 +68,28 @@ class App extends React.Component {
   showGame(event) {
     event.preventDefault();
     const { showGame } = this.state;
+    // console.log(event.target);
     this.setState({
       showGame: !showGame,
     });
   }
 
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
   render() {
-    const { items, showInstructions, showGame } = this.state;
+    const {
+      items, showInstructions, showGame, team1, team2, words,
+    } = this.state;
     return (
       <div>
-        <h1>¿Alias?</h1>
-        {!showGame ? <Intro items={items} showInstructions={this.showInstructions} showGame={this.showGame} /> : null }
-        {showGame ? <GameBoard showGame={this.showGame} /> : null}
+        <div className="mainheader">
+          <h1>¿Alias?</h1>
+        </div>
+          {!showGame ? <Intro items={items} showInstructions={this.showInstructions} showGame={this.showGame} /> : null }
+        {!showGame ? <TeamTitle handleChange={this.handleChange} team1={team1} team2={team2} /> : null}
+        {showGame ? <GameBoard showGame={this.showGame} getWords={this.getWords} team1={team1} team2={team2} words={words} /> : null}
         {showInstructions ? <Instructions /> : null}
       </div>
     );

@@ -1,24 +1,51 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // const items = require('../database-mysql');
-const items = require('../database-mongo');
+const db = require('../database-mongo');
 
 const app = express();
 
 // UNCOMMENT FOR REACT
 app.use(express.static(`${__dirname}/../react-client/dist`));
+app.use(bodyParser.json());
 
 // UNCOMMENT FOR ANGULAR
 // app.use(express.static(__dirname + '/../angular-client'));
 // app.use(express.static(__dirname + '/../node_modules'));
 
-app.get('/items', (req, res) => {
-  items.selectAll((err, data) => {
+app.get('/words', (req, res) => {
+  db.selectAll((err, data) => {
     if (err) {
       res.sendStatus(500);
     } else {
-      res.json(data);
+      const allWords = data[0].words[0].words;
+      // const onlySome = [];
+      // const randoms = [];
+      // for (let i = 0; i < 100; i += 1) {
+      //   const number = Math.floor(Math.random() * (400 - 1) + 1);
+      //   if (!randoms.includes(number)) {
+      //     randoms.push(number);
+      //     onlySome.push(allWords[number]);
+      //   }
+      //   if (onlySome.length === 25) {
+      //     return;
+      //   }
+      // }
+      // console.log('only 25: ', onlySome);
+      // console.log(allWords);
+      res.json(allWords);
+    }
+  });
+});
+
+app.post('/words', (req, res) => {
+  const { body } = req;
+  db.postWords(body, (err, data) => {
+    if (err) {
+      res.status(500);
+    } else {
+      res.status(200).send('Successful post');
     }
   });
 });
