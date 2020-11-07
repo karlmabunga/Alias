@@ -131,11 +131,13 @@ class GameBoard extends React.Component {
     const elements = document.getElementsByClassName('td');
     for (let i = 0; i < elements.length; i += 1) {
       elements[i].classList.add('neutral');
+      elements[i].classList.remove('clicked');
     }
     this.setState({
       red: 9,
       blue: 8,
       redIsNext: true,
+      gameOver: false,
     });
     this.addColor();
     if (showColors) {
