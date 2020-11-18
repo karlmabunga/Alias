@@ -20,20 +20,6 @@ app.get('/words', (req, res) => {
       res.sendStatus(500);
     } else {
       const allWords = data[0].words[0].words;
-      // const onlySome = [];
-      // const randoms = [];
-      // for (let i = 0; i < 100; i += 1) {
-      //   const number = Math.floor(Math.random() * (400 - 1) + 1);
-      //   if (!randoms.includes(number)) {
-      //     randoms.push(number);
-      //     onlySome.push(allWords[number]);
-      //   }
-      //   if (onlySome.length === 25) {
-      //     return;
-      //   }
-      // }
-      // console.log('only 25: ', onlySome);
-      // console.log(allWords);
       res.json(allWords);
     }
   });

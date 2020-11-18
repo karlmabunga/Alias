@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-console */
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Intro from './Intro';
 import Instructions from './Instructions';
@@ -67,7 +66,7 @@ class App extends React.Component {
 
   showGame(event) {
     event.preventDefault();
-    const { showGame, showInstructions } = this.state;
+    const { showGame } = this.state;
     // console.log(event.target);
     this.setState({
       showGame: !showGame,
