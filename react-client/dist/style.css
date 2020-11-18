@@ -10,10 +10,10 @@ h2 {
 }
 h4 {
   text-align: center;
-  color: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  color: -webkit-linear-gradient(45deg, red, blue 80%);
 }
 .mainheader {
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background: -webkit-linear-gradient(45deg, red, blue 80%);
   color: black;
   padding: 15px 32px;
   text-align: center;
