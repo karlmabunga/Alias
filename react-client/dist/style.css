@@ -31,7 +31,7 @@ h4 {
   text-align: center;
 }
 .instructions {
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background: -webkit-linear-gradient(45deg, red, blue 80%);
   color: black;
   padding: 15px 32px;
   text-align: center;
@@ -41,7 +41,7 @@ h4 {
   border-radius: 10px;
 }
 .start {
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background: -webkit-linear-gradient(45deg, red, blue 80%);
   border: none;
   color: black;
   padding: 15px 32px;
@@ -55,7 +55,7 @@ h4 {
   text-align: center;
 }
 .home {
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background: -webkit-linear-gradient(45deg, red, blue 80%);
   border: none;
   color: black;
   padding: 15px 32px;
@@ -66,7 +66,7 @@ h4 {
   border-radius: 10px;
 }
 .newgame {
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background: -webkit-linear-gradient(45deg, red, blue 80%);
   border: none;
   color: black;
   padding: 15px 32px;
@@ -122,8 +122,9 @@ td {
 .masterview {
   text-align: center;
 }
+/* background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%); */
 .masterviewbutton {
-  background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%);
+  background: -webkit-linear-gradient(45deg, red, blue 80%);
   border: none;
   color: black;
   padding: 10px 25px;

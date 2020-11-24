@@ -6,6 +6,7 @@ import App from '../components/App';
 
 describe('GameBoard tests', () => {
   const words = ['AFRICA', 'AGENT', 'AIR', 'ALIEN', 'ALPS', 'AMAZON', 'AMBULANCE', 'AMERICA', 'ANGEL', 'ANTARCTICA', 'APPLE', 'ARM', 'ATLANTIS', 'AUSTRALIA', 'AZTEC', 'BACK', 'BALL', 'BAND', 'BANK', 'BAR', 'BARK', 'BAT', 'BATTERY', 'BEACH', 'BEAR'];
+
   it('allows us to check for certain elements', () => {
     const wrapper = mount(<GameBoard words={words} />);
     expect(wrapper).not.toContainReact(<div>Random Div</div>);
