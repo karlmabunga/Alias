@@ -33,13 +33,13 @@ class App extends React.Component {
       success: (data) => {
         let id = 0;
         const onlySome = [];
-        const randoms = [];
+        const randoms = {};
         for (let i = 0; i < 100; i += 1) {
           const number = Math.floor(Math.random() * (400 - 1) + 1);
           // console.log('number: ', number);
-          if (!randoms.includes(number)) {
+          if (!randoms[number]) {
             id += 1;
-            randoms.push(number);
+            randoms[number] = true;
             onlySome.push([id, data[number]]);
           }
           if (onlySome.length === 25) {
