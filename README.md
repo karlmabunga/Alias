@@ -10,9 +10,17 @@ This product will solve the times where you have a group of people that would li
 
 The game Alias is an interactive fun game that incorporates team work and word correlation to enjoy a fun and competitive time.
 
-## Quote from Company Employee ##
+## Quote ##
 "Fun experience that you don't want to miss out on!" - Karl Mabunga
 
+### To get started ##
+From root directory:
+
+- npm install
+
+- npm start
+
+- npm run react dev
 
 ## Closing ##
 
