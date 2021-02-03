@@ -10,11 +10,9 @@ This product will solve the times where you have a group of people that would li
 
 The game Alias is an interactive fun game that incorporates team work and word correlation to enjoy a fun and competitive time.
 
-## Quote from Company Employee ##
+## Quote ##
 "Fun experience that you don't want to miss out on!" - Karl Mabunga
 
-## Quote from customer ##
-"Had a blast with my family on game night with Alias. I've never played, but it's very easy to learn" - Michael Jordan
 
 ## Closing ##
 
