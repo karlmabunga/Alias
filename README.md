@@ -16,4 +16,4 @@ The game Alias is an interactive fun game that incorporates team work and word c
 
 ## Closing ##
 
-Fun and exciting experience that you don't want to miss out on. To get started go to "https://github.com/karlmabunga/hrsf130-mvp-starter.git".
+Fun and exciting experience that you don't want to miss out on. To get started go to "https://github.com/karlmabunga/Alias.git".
