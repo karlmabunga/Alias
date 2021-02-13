@@ -13,6 +13,14 @@ The game Alias is an interactive fun game that incorporates team work and word c
 ## Quote ##
 "Fun experience that you don't want to miss out on!" - Karl Mabunga
 
+### To get started ##
+From root directory:
+
+- npm install
+
+- npm start
+
+- npm run react dev
 
 ## Closing ##
 
