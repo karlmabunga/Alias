@@ -10,10 +10,10 @@ h2 {
 }
 h4 {
   text-align: center;
-  color: -webkit-linear-gradient(45deg, red, blue 80%);
+  color: -webkit-linear-gradient(45deg, white, rgb(29, 29, 29) 85%);
 }
 .mainheader {
-  background: -webkit-linear-gradient(45deg, red, blue 80%);
+  background: -webkit-linear-gradient(45deg, white, rgb(29, 29, 29) 85%);
   color: black;
   padding: 15px 32px;
   text-align: center;
@@ -31,7 +31,7 @@ h4 {
   text-align: center;
 }
 .instructions {
-  background: -webkit-linear-gradient(45deg, red, blue 80%);
+  background: -webkit-linear-gradient(45deg, white, rgb(100, 100, 100) 80%);
   color: black;
   padding: 15px 32px;
   text-align: center;
@@ -41,7 +41,7 @@ h4 {
   border-radius: 10px;
 }
 .start {
-  background: -webkit-linear-gradient(45deg, red, blue 80%);
+  background: -webkit-linear-gradient(45deg, white, rgb(100, 100, 100) 80%);
   border: none;
   color: black;
   padding: 15px 32px;
@@ -55,7 +55,7 @@ h4 {
   text-align: center;
 }
 .home {
-  background: -webkit-linear-gradient(45deg, red, blue 80%);
+  background: -webkit-linear-gradient(45deg, white, rgb(29, 29, 29) 80%);
   border: none;
   color: black;
   padding: 15px 32px;
@@ -66,7 +66,7 @@ h4 {
   border-radius: 10px;
 }
 .newgame {
-  background: -webkit-linear-gradient(45deg, red, blue 80%);
+  background: -webkit-linear-gradient(45deg, white, rgb(29, 29, 29) 80%);
   border: none;
   color: black;
   padding: 15px 32px;
@@ -82,12 +82,23 @@ h4 {
   margin-right: auto;
   margin-top: 6%;
   padding: 2%;
-  background: #45e045;
+  background: cadetblue;
   border-radius: 12px;
   border-color: black;
   border-width: 5px;
   border-style: solid;
+  transition: all .5s;
 
+  animation: instructions 2s;
+
+}
+@keyframes instructions {
+  0% {
+    background-color: black;
+  }
+  100% {
+    background-color: cadetblue;
+  }
 }
 .board {
   width: 70%;
@@ -122,9 +133,9 @@ td {
 .masterview {
   text-align: center;
 }
-/* background: -webkit-linear-gradient(45deg, #09009f, #00ff95 80%); */
+
 .masterviewbutton {
-  background: -webkit-linear-gradient(45deg, red, blue 80%);
+  background: -webkit-linear-gradient(45deg, white, rgb(29, 29, 29) 80%);
   border: none;
   color: black;
   padding: 10px 25px;
